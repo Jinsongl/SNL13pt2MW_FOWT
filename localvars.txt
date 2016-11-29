@@ -1,0 +1,19 @@
+1.570796                  ! CornerFreq:	Corner frequency (-3dB point) in the recursive, single-pole, low-pass filter, rad/s. -- chosen to be 1/4 the blade edgewise natural frequency ( 1/4 of approx. 1Hz = 0.25Hz = 1.570796rad/s)
+0.0001                    ! PC_DT:   	Communication interval for pitch  controller, sec.
+0.008068634               ! PC_KI: 		Integral gain for pitch controller at rated pitch (zero), (-).
+0.1099965                 ! PC_KK: 		Pitch angle were the the derivative of the aerodynamic power w.r.t. pitch has increased by a factor of two relative to the derivative at rated pitch (zero), rad.
+0.01882681                ! PC_KP:      	Proportional gain for pitch controller at rated pitch (zero), sec.
+1.570796                  ! PC_MaxPit     Maximum pitch setting in pitch controller, rad.
+0.1396263                 ! PC_MaxRat     Maximum pitch  rate (in absolute value) in pitch  controller, rad/s.
+0.0                       ! PC_MinPit     Minimum pitch setting in pitch controller, rad.
+122.9096                  ! PC_RefSpd   	Desired (reference) HSS speed for pitch controller, rad/s.
+70.16224                  ! VS_CtInSp     Transitional generator speed (HSS side) between regions 1 and 1 1/2, rad/s.
+0.0001                    ! VS_DT         Communication interval for torque controller, sec.
+15000.0                   ! VS_MaxRat     Maximum torque rate (in absolute value) in torque controller, N-m/s.
+115000.0                  ! VS_MaxTq      Maximum generator torque in Region 3 (HSS side), N-m. -- chosen to be 10% above VS_RtTq = 43.09355kNm
+2.332287                  ! VS_Rgn2K      Generator torque constant in Region 2 (HSS side), N-m/(rad/s)^2.
+91.21091                  ! VS_Rgn2Sp     Transitional generator speed (HSS side) between regions 1 1/2 and 2, rad/s.
+0.01745329                ! VS_Rgn3MP     Minimum pitch angle at which the torque is computed as if we are in region 3 regardless of the generator speed, rad. -- chosen to be 1.0 degree above PC_MinPit
+121.6805                  ! VS_RtGnSp     Rated generator speed (HSS side), rad/s. -- chosen to be 99% of PC_RefSpd
+13983050.8                ! VS_RtPwr      Rated generator generator power in Region 3, Watts. -- chosen to be 5MW divided by the electrical generator efficiency of 94.4%
+10.0                      ! VS_SlPc       Rated generator slip percentage in Region 2 1/2, %.
