@@ -147,9 +147,9 @@ RootFzc1                  - Axial              force at the root of blade 1
 RootMxc1                  - In-plane     bending moment at the root of blade 1
 RootMyc1                  - Out-of-plane bending moment at the root of blade 1
 RootMzc1                  - Pitching             moment at the root of blade 1
-LSShftFxa				  - Low-speed shaft thrust force (this is constant along the shaft and is equivalent to the rotor thrust force)
-LSShftFya 			      - Rotating low-speed shaft shear force (this is constant along the shaft)
-LSShftFza                 - Rotating low-speed shaft shear force (this is constant along the shaft)
+LSShftFxa	  - Low-speed shaft thrust force (this is constant along the shaft and is equivalent to the rotor thrust force)
+LSShftFya         - Rotating low-speed shaft shear force (this is constant along the shaft)
+LSShftFza         - Rotating low-speed shaft shear force (this is constant along the shaft)
 RotPwr 					  - Rotor power (this is equivalent to the low-speed shaft power)
 RotTorq                   - Rotor torque
 LSSGagMya                 - Low-speed shaft 0- rotating bending moments at the main bearing
