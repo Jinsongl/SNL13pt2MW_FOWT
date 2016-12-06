@@ -12,7 +12,8 @@ addpath('.\SNL13MW')
 addpath('.\Utilities')
 %% Define environment conditions
 load('SEEDS.mat')
-load('Norway5.mat')
+% load('Norway5.mat')
+load('EC2DGrid.mat')
 disp('**********  Environment Conditions  **********')
 disp(['Location: ', site])
 disp('Physical random variables:')
@@ -24,10 +25,10 @@ waveTp  = phyRvs(:,3);
 disp('**********  Model Summaries  **********')
 MODEL_NAME      = 'SNLOffshrBsline13pt2MW';
 MODEL_FOLDER    = 'SNL13MW\';
-MOORING_MODEL   = '660';
+MOORING_MODEL   = '300';
 WORKDIR = pwd;
-mkdir(['D:\SNL13MW\SNLOffshrBsline13pt2MW_Norway5\MOORING',MOORING_MODEL]);
-OUTDIR          = ['D:\SNL13MW\SNLOffshrBsline13pt2MW_Norway5\MOORING',MOORING_MODEL];
+mkdir(['D:\SNL13MW\SNLOffshrBsline13pt2MW_EC2DGrid\MOORING',MOORING_MODEL]);
+OUTDIR          = ['D:\SNL13MW\SNLOffshrBsline13pt2MW_EC2DGrid\MOORING',MOORING_MODEL];
 disp(['Wind turbine model:      ', MODEL_NAME]);
 disp(['Mooring line model:      ', MOORING_MODEL]);
 
@@ -35,7 +36,7 @@ disp(['Mooring line model:      ', MOORING_MODEL]);
 % Predefined simulation parameters
 Nsim        = 10 ;
 Tmax        = 4000;             % total run time, seconds onshr: 10 mins, offshr: one hour
-waveDirs    = 90;%[0, 30, 60, 90]'; % Incident wave propagation heading direction (degrees) 
+waveDirs    = [0,60]';%[0, 30, 60, 90]'; % Incident wave propagation heading direction (degrees) 
 
 disp(['Number of simulatoin:    Nsim = ', num2str(Nsim)]);
 disp(['Total simulation time:   Tmax = ', num2str(Tmax)]);
@@ -73,12 +74,12 @@ changeline(ADipt,10,    ['"',ADwnd,'"']         ,nLines_ADipt);     % Wind file 
 changeline(TSinp,21,    num2str(Tmax, '% 10.1f'),nLines_TSinp);     % Length of analysis time series
 changeline(TSinp,22,    num2str(Tmax, '% 10.1f'),nLines_TSinp);     % Usable length of output time series
 %%
-for iseaState = 19:21 %1 : 10 : size(windVel, 1) %
+for iseaState =  %1 : 10 : size(windVel, 1) %
 %     disp(['Wind Velocity    ', num2str(windVel(iseaState)), 'm/s'])
     for iwaveDir = 1 : size(waveDirs, 1)
         waveDir = waveDirs(iwaveDir);
         changeline(HDipt,18,num2str(waveDir       , '% 10.2f'),nLines_HDipt);% 
-        for iSim = 6
+        for iSim = 1:10
 %             if (iseaState == 17) && (waveDir == 90)
 %                 continue;
 %             end
@@ -92,7 +93,8 @@ for iseaState = 19:21 %1 : 10 : size(windVel, 1) %
             disp(['wave direction:           ', num2str(waveDir),  ' deg'])
             disp(['waveHs:          ', num2str(waveHs(iseaState)),  'm'])
             disp(['waveTp:          ', num2str(waveTp(iseaState)),  's'])
-            outfileName = [MODEL_NAME,MOORING_MODEL, num2str(iseaState, '%02.0f'),num2str(waveDir, '%02.0f'), num2str(iSim, '%02.0f'),'.mat'];
+%             outfileName = [MODEL_NAME,MOORING_MODEL, num2str(iseaState, '%02.0f'),num2str(waveDir, '%02.0f'), num2str(iSim, '%02.0f'),'.mat'];
+            outfileName = [MODEL_NAME,MOORING_MODEL, num2str(waveDir, '%02.0f'), num2str(iseaState, '%02.0f'), num2str(iSim, '%02.0f'),'.mat'];
     %**************constnat wind profile*******************
     %     changeline(ADipt,10, ['"',Windipt,'"'] ,nLines_ADipt);  % Change to const wind file
     %     changeWindLine (Windipt,4,num2str(windVel(DLC),'% 10.2f'),nLines_Wnd);
